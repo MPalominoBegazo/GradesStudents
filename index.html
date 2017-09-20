@@ -61,16 +61,18 @@
                         <div class="modal-body">
                             <form role="form">
                                 <div class="form-group float-label-control">
-                                    <label for="">Username</label>
-                                    <input id="name" type="text" class="form-control" placeholder="Username"  >
+                                    <label for="">name</label>
+                                    <input id="name" type="text" class="form-control" placeholder="Student Name" >
                                 </div>
                                 <div class="form-group float-label-control">
                                     <label for="">Nota Técnico</label>
-                                    <input id="techGrade" type="text" class="form-control" placeholder="Nota Técnico" maxlength="3">
+                                    <input id="techGrade" type="text" class="form-control" placeholder="Tech Grade" maxlength="3" onkeypress="return studentsApp.valida(event)" >
+                                    <!--<input id="gradeHSE" type="text" class="form-control" placeholder="Grade HSE" maxlength="3" onkeypress="return valida(event)" >-->
                                 </div>
                                 <div class="form-group float-label-control">
                                     <label for="">Nota HSE</label>
-                                    <input id="gradeHSE" type="text" class="form-control" placeholder="Nota HSE" maxlength="3">
+                                    <input id="gradeHSE" type="text" class="form-control" placeholder="Grade HSE" maxlength="3" onkeypress="return studentsApp.valida(event)" >
+                                    <!--<input id="gradeHSE" type="text" class="form-control" placeholder="Grade HSE" maxlength="3" onkeypress="return valida(event)" >-->
                                 </div>
                             </form>
                         </div>
