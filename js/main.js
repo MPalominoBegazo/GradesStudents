@@ -66,6 +66,7 @@ function showEmployability(grade) {
     let div = document.getElementById("addNotes");
     div.innerHTML = "";
     let cadArr = " ";
+
     for (let i in grade) {
         cadArr += showStudents(grade[i]);
     }
@@ -80,9 +81,10 @@ function topTech() {
     div.innerHTML = "";
 
     //genera el top tech
-    let topTech = students.filter(function (student){
-        return student.techGrade}).sort(function(a, b){
-            return b.techGrade-a.techGrade;
+    let topTech = students.filter(function (student) {
+        return student.techGrade
+    }).sort(function (a, b) {
+        return b.techGrade - a.techGrade;
     });
 
     //imprime
@@ -99,9 +101,10 @@ function topHSE() {
     let cadArr = " ";
     div.innerHTML = "";
     //genera el topHSE
-    let topHSE = students.filter(function (student){
-        return student.hseGrade}).sort(function(a, b){
-            return b.hseGrade-a.hseGrade;
+    let topHSE = students.filter(function (student) {
+        return student.hseGrade
+    }).sort(function (a, b) {
+        return b.hseGrade - a.hseGrade;
     });
 
     //imprime

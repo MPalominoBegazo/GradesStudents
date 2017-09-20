@@ -1,10 +1,10 @@
 "use strict";
 let studentsApp = {
-    items: 
+    items:
     {
-        students:[]
+        students: []
     },
-    init: function (){
+    init: function () {
         $("#addBtn").click(studentsApp.addStudent);
         $("#print").click(studentsApp.showStudentsList);
         $("#update").click(studentsApp.updateDropout);
@@ -12,22 +12,20 @@ let studentsApp = {
         $("#tech").click(studentsApp.topTech);
         $("#HSE").click(studentsApp.topHSE);
     },
-    
     //add estudents
-    addStudent: function() {
+    addStudent: function () {
         let name = $("#name").val();
         let techGrade = parseInt($("#techGrade").val());
         let hseGrade = parseInt($("#gradeHSE").val());
-    
+
         let Student = {
             name: name,
             techGrade: techGrade,
             hseGrade: hseGrade
         }
         studentsApp.items.students.push(Student);
-    
+
     },
-    
     //show students
     showStudents: function (student) {
         let resultado = `<li>
@@ -41,34 +39,26 @@ let studentsApp = {
                                 </div>
                             </div>
                         </li>`;
-    
-    
         return resultado;
     },
-    
     //lista
-    showStudentsList: function() {
+    showStudentsList: function () {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
         for (let i in studentsApp.items.students) {
             cadArr += studentsApp.showStudents(studentsApp.items.students[i]);
-    
         }
         div.innerHTML = cadArr;
     },
-    
     //filtrar estudiantes
-    updateDropout: function() {
+    updateDropout: function () {
         let grade = studentsApp.items.students.filter(function (student) {
             return student.techGrade >= 70;
         });
         studentsApp.showEmployability(grade);
-    
-    
     },
-    
     //showemployabolity
-    showEmployability: function(grade) {
+    showEmployability: function (grade) {
         let div = document.getElementById("addNotes");
         div.innerHTML = "";
         let cadArr = " ";
@@ -76,40 +66,36 @@ let studentsApp = {
             cadArr += studentsApp.showStudents(grade[i]);
         }
         div.innerHTML = cadArr;
-    
     },
-    
     //Top orden descendente notas tecnicas
-    topTech: function() {
+    topTech: function () {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
         div.innerHTML = "";
-    
         //genera el top tech
-        let topTech = studentsApp.items.students.filter(function (student){
-            return student.techGrade}).sort(function(a, b){
-                return b.techGrade-a.techGrade;
+        let topTech = studentsApp.items.students.filter(function (student) {
+            return student.techGrade
+        }).sort(function (a, b) {
+            return b.techGrade - a.techGrade;
         });
-    
         //imprime
         for (let i in topTech) {
             cadArr += studentsApp.showStudents(topTech[i]);
         }
         div.innerHTML = cadArr;
-    
+
     },
-    
     //Top orden descendente notas HSE
-    topHSE: function() {
+    topHSE: function () {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
         div.innerHTML = "";
         //genera el topHSE
-        let topHSE = studentsApp.items.students.filter(function (student){
-            return student.hseGrade}).sort(function(a, b){
-                return b.hseGrade-a.hseGrade;
+        let topHSE = studentsApp.items.students.filter(function (student) {
+            return student.hseGrade
+        }).sort(function (a, b) {
+            return b.hseGrade - a.hseGrade;
         });
-    
         //imprime
         for (let i in topHSE) {
             cadArr += studentsApp.showStudents(topHSE[i]);
@@ -117,5 +103,4 @@ let studentsApp = {
         div.innerHTML = cadArr;
     }
 }
-
 $(document).ready(studentsApp.init());
