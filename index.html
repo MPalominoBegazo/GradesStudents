@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>GRADES-REPORT</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar  navbar-inverse  navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand " href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i>  REGISTRO DE ESTUDIANTES</a>
+            </div>
+
+        </nav>
+    </header>
+    <section id="notas">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-2">
+                    <a class="btn icon-btn btn-success" href="#" data-toggle="modal" data-target="#add"><i class="fa fa-plus-circle" aria-hidden="true"></i> ADD</a>
+                </div>
+                <div class="col-md-2">
+                    <a id="print" class="btn icon-btn btn-warning" href="#"><i class="fa fa-print" aria-hidden="true"></i> PRINT ALL</a>
+                </div>
+                <div class="col-md-2">
+                    <a id="update" class="btn icon-btn btn-danger" href="#"><i class="fa fa-database" aria-hidden="true"></i> UPDATE DROPOUT</a>
+                </div>
+                <div class="col-md-2">
+                    <a id="employability" class="btn icon-btn btn-info" href="#"><i class="fa fa-street-view" aria-hidden="true"></i> RUN EMPLOYABILITY</a>
+                </div>
+                <div class="col-md-2">
+                    <a id="tech" class="btn icon-btn btn-primary" href="#"><i class="fa fa-address-card-o" aria-hidden="true"></i> TOP TECH</a>
+                </div>
+                <div class="col-md-2">
+                    <a id="HSE" class="btn icon-btn btn-success" href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i> TOP HSE</a>
+                </div>
+
+            </div>
+
+            <div class="row" id="gradeStudents">
+                <ul class="notes" id="addNotes">
+                </ul>
+            </div>
+            <!-- Modal -->
+            <div id="add" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Student</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group float-label-control">
+                                    <label for="">Username</label>
+                                    <input id="name" type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <label for="">Nota Técnico</label>
+                                    <input id="techGrade" type="text" class="form-control" placeholder="Nota Técnico">
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <label for="">Nota HSE</label>
+                                    <input id="gradeHSE" type="text" class="form-control" placeholder="Nota HSE">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">Add</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/main.js"></script>-->
+    <script src="js/literales.js"></script>
+</body>
+
+</html>
