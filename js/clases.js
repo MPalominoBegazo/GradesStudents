@@ -1,19 +1,19 @@
-"use strict";
-let studentsApp = {
-    items:
+
+class appStudent{
+    constructor()
     {
-        students: []
-    },
-    init: function () {
-        $("#addBtn").click(studentsApp.addStudent);
-        $("#print").click(studentsApp.showStudentsList);
-        $("#update").click(studentsApp.updateDropout);
-        $("#employability").click(studentsApp.updateDropout);
-        $("#tech").click(studentsApp.topTech);
-        $("#HSE").click(studentsApp.topHSE);
-    },
+        this.students=[];
+    }
+    init() {
+        $("#addBtn").click(() => this.addStudent());
+        $("#print").click(() =>this.showStudentsList());
+        $("#update").click(() =>this.updateDropout());
+        $("#employability").click(() =>this.updateDropout());
+        $("#tech").click(() =>this.topTech());
+        $("#HSE").click(() =>this.topHSE());
+    }
     //add estudents
-    addStudent: function () {
+    addStudent() {
         let div = document.getElementById("addNotes");
         let name = $("#name").val();
         let techGrade = parseInt($("#techGrade").val());
@@ -26,12 +26,13 @@ let studentsApp = {
             hseGrade: hseGrade,
             promedio: prom
         }
-        studentsApp.items.students.push(Student);
-        div.innerHTML = studentsApp.showStudents(Student);
+        this.students.push(Student);
+       // console.log(this.students);
+        div.innerHTML = this.showStudents(Student);
 
-    },
+    }
     //show students
-    showStudents: function (student) {
+    showStudents(student) {
         let resultado = `<li>
                             <div class="rotate-1 lazur-bg">
                                 <div class='card blue-grey darken-1'>
@@ -45,77 +46,73 @@ let studentsApp = {
                             </div>
                         </li>`;
         return resultado;
-    },
+    }
     //lista
-    showStudentsList: function () {
+    showStudentsList() {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
-        for (let i in studentsApp.items.students) {
-            cadArr += studentsApp.showStudents(studentsApp.items.students[i]);
+        console.log(this.students);
+        for (let i in this.students) {
+            cadArr += this.showStudents(this.students[i]);
         }
         div.innerHTML = cadArr;
-    },
+    }
     //filtrar estudiantes
-    updateDropout: function () {
-        let grade = studentsApp.items.students.filter(function (student) {
+    updateDropout() {
+        let grade = this.students.filter(function (student) {
             
             return student.promedio >= 70;
         });
-        studentsApp.showEmployability(grade);
-    },
+        this.showEmployability(grade);
+    }
     //showemployabolity
-    showEmployability: function (grade) {
+    showEmployability(grade) {
         let div = document.getElementById("addNotes");
         div.innerHTML = "";
         let cadArr = " ";
         for (let i in grade) {
-            cadArr += studentsApp.showStudents(grade[i]);
+            cadArr += this.showStudents(grade[i]);
         }
         div.innerHTML = cadArr;
-    },
+    }
     //Top orden descendente notas tecnicas
-    topTech: function () {
+    topTech() {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
         div.innerHTML = "";
         //genera el top tech
-        let topTech = studentsApp.items.students.filter(function (student) {
+        let topTech = this.students.filter(function (student) {
             return student.techGrade
         }).sort(function (a, b) {
             return b.techGrade - a.techGrade;
         });
         //imprime
         for (let i in topTech) {
-            cadArr += studentsApp.showStudents(topTech[i]);
+            cadArr += this.showStudents(topTech[i]);
         }
         div.innerHTML = cadArr;
 
-    },
+    }
     //Top orden descendente notas HSE
-    topHSE: function () {
+    topHSE() {
         let div = document.getElementById("addNotes");
         let cadArr = " ";
         div.innerHTML = "";
         //genera el topHSE
-        let topHSE = studentsApp.items.students.filter(function (student) {
+        let topHSE = this.students.filter(function (student) {
             return student.hseGrade
         }).sort(function (a, b) {
             return b.hseGrade - a.hseGrade;
         });
         //imprime
         for (let i in topHSE) {
-            cadArr += studentsApp.showStudents(topHSE[i]);
+            cadArr += this.showStudents(topHSE[i]);
         }
         div.innerHTML = cadArr;
-    },
-
-    valida: function(e){
-        
-        var charCode = (e.which) ? e.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-           return false;
-
-        return true;
     }
+
+  
 }
-$(document).ready(studentsApp.init());
+
+let student = new appStudent();
+student.init();
