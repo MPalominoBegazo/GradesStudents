@@ -17,11 +17,13 @@ let studentsApp = {
         let name = $("#name").val();
         let techGrade = parseInt($("#techGrade").val());
         let hseGrade = parseInt($("#gradeHSE").val());
+        let prom = (techGrade  + hseGrade)/2;
 
         let Student = {
             name: name,
             techGrade: techGrade,
-            hseGrade: hseGrade
+            hseGrade: hseGrade,
+            promedio: prom
         }
         studentsApp.items.students.push(Student);
 
@@ -35,6 +37,7 @@ let studentsApp = {
                                                 <p><strong>Nombre:</strong>${student.name}</p>
                                                 <p><strong>Puntos Técnicos:</strong>${student.techGrade}</p>
                                                 <p><strong>Puntos HSE:</strong>${student.hseGrade}</p>
+                                                <p><strong>Promedio:</strong>${student.promedio}</p>
                                             </div>
                                 </div>
                             </div>
@@ -53,7 +56,8 @@ let studentsApp = {
     //filtrar estudiantes
     updateDropout: function () {
         let grade = studentsApp.items.students.filter(function (student) {
-            return student.techGrade >= 70;
+            
+            return student.promedio >= 70;
         });
         studentsApp.showEmployability(grade);
     },
